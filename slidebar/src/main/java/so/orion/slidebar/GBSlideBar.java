@@ -64,6 +64,8 @@ public class GBSlideBar extends View {
     private ValueAnimator mStartAnim, mEndAnim;
     private boolean mIsFirstSelect = true, mCanSelect = true;
 
+    private GBSlideBarListener gbSlideBarListener;
+
 
     public GBSlideBar(Context context) {
         super(context);
@@ -102,7 +104,6 @@ public class GBSlideBar extends View {
         mTextColor = a.getColor(R.styleable.GBSlideBar_gbs_textColor, Color.BLACK);
 
         a.recycle();
-
     }
 
     private void drawBackground() {
@@ -115,7 +116,6 @@ public class GBSlideBar extends View {
 
         mCurrentX = mPivotX = getWidth() / 2;
         mCurrentY = mPivotY = getHeight() / 2;
-
 
         int widthBase = rect.width() / getCount();
         int widthHalf = widthBase / 2;
@@ -164,6 +164,7 @@ public class GBSlideBar extends View {
                     minDistance = distance;
                 }
             }
+
             setCurrentItem(minIndex);
             stateListDrawable = mAdapter.getItem(minIndex);
 
@@ -172,7 +173,9 @@ public class GBSlideBar extends View {
             mSlide = false;
             mCurrentX = mAnchor[mCurrentItem][0];
             mCurrentY = mAnchor[mCurrentItem][1];
-
+            if (mFirstDraw) {
+                mSlideX = mLastX = mCurrentX;
+            }
             stateListDrawable = mAdapter.getItem(mCurrentItem);
 
             mIsFirstSelect = true;
@@ -311,10 +314,10 @@ public class GBSlideBar extends View {
 //                if (BuildConfig.DEBUG) Log.d(TAG, "Move " + event.getX());
                     return true;
                 case MotionEvent.ACTION_DOWN:
-                    if (BuildConfig.DEBUG) Log.d(TAG, "Down " + event.getX());
+                    Log.d(TAG, "Down " + event.getX());
                     return true;
                 case MotionEvent.ACTION_UP:
-                    if (BuildConfig.DEBUG) Log.d(TAG, "Up " + event.getX());
+                    Log.d(TAG, "Up " + event.getX());
                     mCanSelect = false;
                     invalidate();
                     return true;
@@ -338,10 +341,26 @@ public class GBSlideBar extends View {
     }
 
     private void setCurrentItem(int currentItem) {
+        if (mCurrentItem != currentItem && gbSlideBarListener != null) {
+            gbSlideBarListener.onPositionSelected(currentItem);
+        }
         mCurrentItem = currentItem;
     }
 
     public void setAdapter(GBSlideBarAdapter adapter) {
         mAdapter = adapter;
+    }
+
+    public void setPosition(int position) {
+        position = position < 0 ? 0 : position;
+        position = position > mAdapter.getCount() ? mAdapter.getCount() - 1 : position;
+        mCurrentItem = position;
+        mSlide = true;
+        invalidate();
+    }
+
+    public void setOnGbSlideBarListener(GBSlideBarListener listener) {
+        this.gbSlideBarListener = listener;
+
     }
 }

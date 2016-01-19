@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import so.orion.slidebar.GBSlideBar;
+import so.orion.slidebar.GBSlideBarListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +32,17 @@ public class MainActivity extends AppCompatActivity {
         Log.i("edanelx",mAdapter.getCount()+"");
 
 
+
+
         gbSlideBar.setAdapter(mAdapter);
 
+        gbSlideBar.setPosition(2);
+
+        gbSlideBar.setOnGbSlideBarListener(new GBSlideBarListener() {
+            @Override
+            public void onPositionSelected(int position) {
+                Log.d("edanelx","selected "+position);
+            }
+        });
     }
 }
