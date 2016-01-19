@@ -1,6 +1,7 @@
 package so.orion.gbslidebar;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
         gbSlideBar = (GBSlideBar) findViewById(R.id.gbslidebar);
 
         Resources resources = getResources();
-
         mAdapter = new SlideAdapter(resources, new int[]{
                 R.drawable.btn_tag_selector,
                 R.drawable.btn_more_selector,
                 R.drawable.btn_reject_selector});
+
+        mAdapter.setTextColor(new int[]{
+                Color.RED,
+                Color.BLUE,
+                Color.GREEN
+        });
 
         Log.i("edanelx",mAdapter.getCount()+"");
 

@@ -188,6 +188,7 @@ public class GBSlideBar extends View {
 
             mIsFirstSelect = true;
 
+
         }
         stateListDrawable.setState(mState);
         itemDefault = stateListDrawable.getCurrent();
@@ -196,6 +197,11 @@ public class GBSlideBar extends View {
         for (int i = 0; i < getCount(); i++) {
             if (i == mCurrentItem) {
 //                continue; //
+                mPaint.setColor(mAdapter.getTextColor(mCurrentItem));
+                canvas.drawText(mAdapter.getText(i), mAnchor[i][0], mAnchor[i][1] + mAnchorHeight * 3 / 2 + mTextMargin, mPaint);
+            }else {
+                mPaint.setColor(mTextColor);
+                canvas.drawText(mAdapter.getText(i), mAnchor[i][0], mAnchor[i][1] + mAnchorHeight * 3 / 2 + mTextMargin, mPaint);
             }
             stateListDrawable = mAdapter.getItem(i);
             stateListDrawable.setState(STATE_NORMAL);
@@ -207,7 +213,7 @@ public class GBSlideBar extends View {
                     mAnchor[i][1] + mPlaceHolderHeight
             );
             itemSlide.draw(canvas);
-            canvas.drawText(mAdapter.getText(i), mAnchor[i][0], mAnchor[i][1] + mAnchorHeight * 3 / 2 + mTextMargin, mPaint);
+
         }
 
 

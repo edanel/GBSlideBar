@@ -21,6 +21,7 @@ public class SlideAdapter implements GBSlideBarAdapter {
 
     protected StateListDrawable[] mItems;
     protected String[] content = new String[]{"Tag","More","Reject"};
+    protected int[] textColor;
 
     public SlideAdapter(Resources resources, int[] items) {
         int size = items.length;
@@ -50,5 +51,14 @@ public class SlideAdapter implements GBSlideBarAdapter {
     @Override
     public StateListDrawable getItem(int position) {
         return mItems[position];
+    }
+
+    @Override
+    public int getTextColor(int position) {
+        return textColor[position];
+    }
+
+    public void setTextColor(int[] color){
+        textColor = color;
     }
 }
