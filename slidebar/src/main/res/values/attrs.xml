@@ -18,5 +18,8 @@
         <attr name="gbs_type" format="integer|reference" />
         <attr name="gbs_textSize" format="dimension|reference"/>
         <attr name="gbs_textColor" format="color|reference"/>
+
+        <attr name="gbs_text_margin" format="dimension|reference" />
+
     </declare-styleable>
 </resources>

@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i("edanelx",mAdapter.getCount()+"");
 
 
-
-
         gbSlideBar.setAdapter(mAdapter);
 
         gbSlideBar.setPosition(2);

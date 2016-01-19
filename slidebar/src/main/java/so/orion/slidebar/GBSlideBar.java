@@ -50,6 +50,7 @@ public class GBSlideBar extends View {
     private int mAnchorWidth, mAnchorHeight;
 
     private int mPlaceHolderWidth, mPlaceHolderHeight;
+    private int mTextMargin;
     private int mType;
 
     private Paint mPaint;
@@ -103,6 +104,7 @@ public class GBSlideBar extends View {
         mTextSize = a.getDimensionPixelSize(R.styleable.GBSlideBar_gbs_textSize, 28);
         mTextColor = a.getColor(R.styleable.GBSlideBar_gbs_textColor, Color.BLACK);
 
+        mTextMargin = (int) a.getDimension(R.styleable.GBSlideBar_gbs_text_margin,0.0f);
         a.recycle();
     }
 
@@ -142,6 +144,7 @@ public class GBSlideBar extends View {
         mPaint.setTextSize(mTextSize);
         mPaint.setColor(mTextColor);
         mPaint.setTextAlign(Paint.Align.CENTER);
+
 
     }
 
@@ -199,7 +202,7 @@ public class GBSlideBar extends View {
                     mAnchor[i][1] + mPlaceHolderHeight
             );
             itemSlide.draw(canvas);
-            canvas.drawText(mAdapter.getText(i), mAnchor[i][0] - mAnchorWidth / 10, mAnchor[i][1] + mAnchorHeight * 3 / 2, mPaint);
+            canvas.drawText(mAdapter.getText(i), mAnchor[i][0], mAnchor[i][1] + mAnchorHeight * 3 / 2 + mTextMargin, mPaint);
         }
 
 
@@ -210,7 +213,6 @@ public class GBSlideBar extends View {
                 mCurrentY + mAnchorHeight
         );
 
-
         itemDefault.draw(canvas);
 
         setFirstDraw(false);
@@ -220,8 +222,6 @@ public class GBSlideBar extends View {
 
     private void endSlide() {
         if (mIsEndAnimation == false && mSlide) {
-
-
             mIsEndAnimation = true;
             mEndAnim = ValueAnimator.ofFloat(0.0f, 1.0f);
             mEndAnim.setDuration(200);
@@ -231,8 +231,6 @@ public class GBSlideBar extends View {
                 public void onAnimationUpdate(ValueAnimator animation) {
                     mSlideX = (int) ((mCurrentX - mLastX) * animation.getAnimatedFraction() + mLastX);
                     mSlideY = (int) (mCurrentY * animation.getAnimatedFraction());
-
-
                     invalidate();
                 }
             });
@@ -240,7 +238,6 @@ public class GBSlideBar extends View {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     mIsStartAnimation = false;
-
                     mLastX = mCurrentX;
                     mIsEndAnimation = false;
                     mCanSelect = true;
@@ -284,7 +281,6 @@ public class GBSlideBar extends View {
             });
             mStartAnim.start();
         }
-
     }
 
     @Override
@@ -361,6 +357,5 @@ public class GBSlideBar extends View {
 
     public void setOnGbSlideBarListener(GBSlideBarListener listener) {
         this.gbSlideBarListener = listener;
-
     }
 }
