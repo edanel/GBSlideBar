@@ -18,12 +18,12 @@
         app:gbs_anchor_height="25dp"
         app:gbs_anchor_width="25dp"
         app:gbs_background="#e0e0e0"
-        app:gbs_marginBottom="45dp"
+        app:gbs_paddingBottom="65dp"
         app:gbs_placeholder_width="20dp"
         app:gbs_placeholder_height="20dp"
-        app:gbs_marginLeft="10dp"
-        app:gbs_marginRight="10dp"
-        app:gbs_marginTop="45dp"
+        app:gbs_paddingLeft="10dp"
+        app:gbs_paddingRight="10dp"
+        app:gbs_paddingTop="25dp"
         app:gbs_textSize="14sp"
         app:gbs_textColor="#666" />
 

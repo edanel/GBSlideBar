@@ -60,6 +60,8 @@ public class GBSlideBar extends View {
     private int mLastX;
     private int mSlideX, mSlideY;
 
+    private int mAbsoluteY;
+
     private int mSelectedX;
     private boolean mIsStartAnimation = false, mIsEndAnimation = false;
     private ValueAnimator mStartAnim, mEndAnim;
@@ -86,10 +88,10 @@ public class GBSlideBar extends View {
     private void init(AttributeSet attributeSet, int defStyleAttr) {
         mBackgroundPaddingRect = new RectF();
         TypedArray a = getContext().obtainStyledAttributes(attributeSet, R.styleable.GBSlideBar, defStyleAttr, 0);
-        mBackgroundPaddingRect.left = a.getDimension(R.styleable.GBSlideBar_gbs_marginLeft, 0.0f);
-        mBackgroundPaddingRect.top = a.getDimension(R.styleable.GBSlideBar_gbs_marginTop, 0.0f);
-        mBackgroundPaddingRect.right = a.getDimension(R.styleable.GBSlideBar_gbs_marginRight, 0.0f);
-        mBackgroundPaddingRect.bottom = a.getDimension(R.styleable.GBSlideBar_gbs_marginBottom, 0.0f);
+        mBackgroundPaddingRect.left = a.getDimension(R.styleable.GBSlideBar_gbs_paddingLeft, 0.0f);
+        mBackgroundPaddingRect.top = a.getDimension(R.styleable.GBSlideBar_gbs_paddingTop, 0.0f);
+        mBackgroundPaddingRect.right = a.getDimension(R.styleable.GBSlideBar_gbs_paddingRight, 0.0f);
+        mBackgroundPaddingRect.bottom = a.getDimension(R.styleable.GBSlideBar_gbs_paddingBottom, 0.0f);
 
         mAnchorWidth = (int) a.getDimension(R.styleable.GBSlideBar_gbs_anchor_width, 50.0f);
         mAnchorHeight = (int) a.getDimension(R.styleable.GBSlideBar_gbs_anchor_height, 50.0f);
@@ -104,7 +106,7 @@ public class GBSlideBar extends View {
         mTextSize = a.getDimensionPixelSize(R.styleable.GBSlideBar_gbs_textSize, 28);
         mTextColor = a.getColor(R.styleable.GBSlideBar_gbs_textColor, Color.BLACK);
 
-        mTextMargin = (int) a.getDimension(R.styleable.GBSlideBar_gbs_text_margin,0.0f);
+        mTextMargin = (int) a.getDimension(R.styleable.GBSlideBar_gbs_text_margin, 0.0f);
         a.recycle();
     }
 
@@ -115,6 +117,10 @@ public class GBSlideBar extends View {
                 (int) (getWidth() - mBackgroundPaddingRect.right - mAnchorWidth),
                 (int) (getHeight() - mBackgroundPaddingRect.bottom));
         mBackgroundDrawable.setBounds(rect);
+
+        mAbsoluteY = (int) (mBackgroundPaddingRect.top - mBackgroundPaddingRect.bottom);
+
+        Log.d(TAG, "mAbsoluteY:" + mBackgroundPaddingRect.top + " : " + mBackgroundPaddingRect.bottom + " : "+ (mBackgroundPaddingRect.top - mBackgroundPaddingRect.bottom));
 
         mCurrentX = mPivotX = getWidth() / 2;
         mCurrentY = mPivotY = getHeight() / 2;
@@ -135,7 +141,7 @@ public class GBSlideBar extends View {
             } else {
                 mAnchor[i][0] = mModIsHorizontal ? widthBase * j - widthHalf + rect.left : mPivotX;
             }
-            mAnchor[i][1] = !mModIsHorizontal ? heightBase * j - heightHalf + rect.top : mPivotY;
+            mAnchor[i][1] = !mModIsHorizontal ? heightBase * j - heightHalf + rect.top : mPivotY + mAbsoluteY /2;
 //            }
 
         }
@@ -144,7 +150,6 @@ public class GBSlideBar extends View {
         mPaint.setTextSize(mTextSize);
         mPaint.setColor(mTextColor);
         mPaint.setTextAlign(Paint.Align.CENTER);
-
 
     }
 

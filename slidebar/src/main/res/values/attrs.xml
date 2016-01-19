@@ -2,10 +2,10 @@
 <resources>
 
     <declare-styleable name="GBSlideBar">
-        <attr name="gbs_marginLeft" format="dimension|reference" />
-        <attr name="gbs_marginTop" format="dimension|reference" />
-        <attr name="gbs_marginRight" format="dimension|reference" />
-        <attr name="gbs_marginBottom" format="dimension|reference" />
+        <attr name="gbs_paddingLeft" format="dimension|reference" />
+        <attr name="gbs_paddingTop" format="dimension|reference" />
+        <attr name="gbs_paddingRight" format="dimension|reference" />
+        <attr name="gbs_paddingBottom" format="dimension|reference" />
         <attr name="gbs_background" format="color|reference" />
 
         <attr name="gbs_anchor_height" format="dimension|reference" />
