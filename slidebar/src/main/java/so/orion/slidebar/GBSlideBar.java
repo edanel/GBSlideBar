@@ -120,7 +120,7 @@ public class GBSlideBar extends View {
 
         mAbsoluteY = (int) (mBackgroundPaddingRect.top - mBackgroundPaddingRect.bottom);
 
-        Log.d(TAG, "mAbsoluteY:" + mBackgroundPaddingRect.top + " : " + mBackgroundPaddingRect.bottom + " : "+ (mBackgroundPaddingRect.top - mBackgroundPaddingRect.bottom));
+        Log.d(TAG, "mAbsoluteY:" + mBackgroundPaddingRect.top + " : " + mBackgroundPaddingRect.bottom + " : " + (mBackgroundPaddingRect.top - mBackgroundPaddingRect.bottom));
 
         mCurrentX = mPivotX = getWidth() / 2;
         mCurrentY = mPivotY = getHeight() / 2;
@@ -141,7 +141,7 @@ public class GBSlideBar extends View {
             } else {
                 mAnchor[i][0] = mModIsHorizontal ? widthBase * j - widthHalf + rect.left : mPivotX;
             }
-            mAnchor[i][1] = !mModIsHorizontal ? heightBase * j - heightHalf + rect.top : mPivotY + mAbsoluteY /2;
+            mAnchor[i][1] = !mModIsHorizontal ? heightBase * j - heightHalf + rect.top : mPivotY + mAbsoluteY / 2;
 //            }
 
         }
@@ -213,9 +213,9 @@ public class GBSlideBar extends View {
 
         itemDefault.setBounds(
                 mSlideX - mAnchorWidth,
-                mCurrentY - mAnchorHeight,
+                mPivotY + mAbsoluteY / 2 - mAnchorHeight,
                 mSlideX + mAnchorWidth,
-                mCurrentY + mAnchorHeight
+                mPivotY + mAbsoluteY / 2 + mAnchorHeight
         );
 
         itemDefault.draw(canvas);
