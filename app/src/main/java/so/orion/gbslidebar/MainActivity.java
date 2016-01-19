@@ -1,0 +1,37 @@
+package so.orion.gbslidebar;
+
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import so.orion.slidebar.GBSlideBar;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    private GBSlideBar gbSlideBar;
+    private SlideAdapter mAdapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        gbSlideBar = (GBSlideBar) findViewById(R.id.gbslidebar);
+
+        Resources resources = getResources();
+
+        mAdapter = new SlideAdapter(resources, new int[]{
+                R.drawable.btn_tag_selector,
+                R.drawable.btn_more_selector,
+                R.drawable.btn_reject_selector});
+
+        Log.i("edanelx",mAdapter.getCount()+"");
+
+
+        gbSlideBar.setAdapter(mAdapter);
+
+    }
+}

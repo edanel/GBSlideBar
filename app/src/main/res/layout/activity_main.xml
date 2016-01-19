@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="so.orion.gbslidebar.MainActivity">
+
+    <so.orion.slidebar.GBSlideBar
+        android:id="@+id/gbslidebar"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        app:gbs_anchor_height="25dp"
+        app:gbs_anchor_width="25dp"
+        app:gbs_background="#e0e0e0"
+        app:gbs_marginBottom="45dp"
+        app:gbs_placeholder_width="20dp"
+        app:gbs_placeholder_height="20dp"
+        app:gbs_marginLeft="10dp"
+        app:gbs_marginRight="10dp"
+        app:gbs_marginTop="45dp"
+        app:gbs_textSize="14sp"
+        app:gbs_textColor="#666" />
+
+
+</RelativeLayout>

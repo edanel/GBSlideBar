@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GBSlideBar">
+        <attr name="gbs_marginLeft" format="dimension|reference" />
+        <attr name="gbs_marginTop" format="dimension|reference" />
+        <attr name="gbs_marginRight" format="dimension|reference" />
+        <attr name="gbs_marginBottom" format="dimension|reference" />
+        <attr name="gbs_background" format="color|reference" />
+
+        <attr name="gbs_anchor_height" format="dimension|reference" />
+        <attr name="gbs_anchor_width" format="dimension|reference" />
+
+        <attr name="gbs_placeholder_height" format="dimension|reference" />
+        <attr name="gbs_placeholder_width" format="dimension|reference" />
+
+
+        <attr name="gbs_type" format="integer|reference" />
+        <attr name="gbs_textSize" format="dimension|reference"/>
+        <attr name="gbs_textColor" format="color|reference"/>
+    </declare-styleable>
+</resources>
