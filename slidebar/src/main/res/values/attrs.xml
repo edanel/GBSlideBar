@@ -7,18 +7,13 @@
         <attr name="gbs_paddingRight" format="dimension|reference" />
         <attr name="gbs_paddingBottom" format="dimension|reference" />
         <attr name="gbs_background" format="color|reference" />
-
         <attr name="gbs_anchor_height" format="dimension|reference" />
         <attr name="gbs_anchor_width" format="dimension|reference" />
-
         <attr name="gbs_placeholder_height" format="dimension|reference" />
         <attr name="gbs_placeholder_width" format="dimension|reference" />
-
-
         <attr name="gbs_type" format="integer|reference" />
         <attr name="gbs_textSize" format="dimension|reference"/>
         <attr name="gbs_textColor" format="color|reference"/>
-
         <attr name="gbs_text_margin" format="dimension|reference" />
 
     </declare-styleable>
