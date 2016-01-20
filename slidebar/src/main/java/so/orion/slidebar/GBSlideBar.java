@@ -333,7 +333,11 @@ public class GBSlideBar extends View {
 
         return super.onTouchEvent(event);
     }
-
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+        return super.dispatchTouchEvent(event);
+    }
 
     private int getNormalizedX(MotionEvent event) {
         return Math.min(Math.max((int) event.getX(), mAnchorWidth), getWidth() - mAnchorWidth);
