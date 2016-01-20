@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.btn_reject_selector});
 
         mAdapter.setTextColor(new int[]{
-                Color.RED,
+                Color.GREEN,
                 Color.BLUE,
-                Color.GREEN
+                Color.RED
         });
 
         Log.i("edanelx",mAdapter.getCount()+"");
