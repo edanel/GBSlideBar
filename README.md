@@ -4,7 +4,7 @@
 
 #效果图
 
-![animation](https://raw.githubusercontent.com/edanel/GBSlideBar/master/screenshot/preview.gif)
+![animation](https://raw.githubusercontent.com/edanel/GBSlideBar/master/screenshot/preview-480.gif)
 
 #使用
 
