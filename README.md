@@ -2,11 +2,11 @@
 [项目不再维护,有需要的可自行根据需求对源码进行修改]
 类似uber的滑动选择工具条
 
-#效果图
+# 效果图
 
 ![animation](https://raw.githubusercontent.com/edanel/GBSlideBar/master/screenshot/preview-480.gif)
 
-#使用
+# 使用
 
 ```xml
 
@@ -56,7 +56,7 @@
         });
 ```
 
-#引用
+# 引用
 
 ```
 	allprojects {
@@ -72,6 +72,6 @@
 	}
 ```
 
-#其他
+# 其他
 
 参考：[android-phased-seek-bar](https://github.com/ademar111190/android-phased-seek-bar)
